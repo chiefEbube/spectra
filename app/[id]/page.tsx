@@ -25,7 +25,7 @@ export default async function SingleMoviePage({ params }: { params: { id: string
   return (
     <div className="container mx-auto px-4 py-8">
       <Link href="/" className="text-blue-500 hover:underline mb-4 inline-block">&larr; Back to movies</Link>
-      <div className="bg-white rounded-lg shadow-md overflow-hidden">
+      <div className="bg-[#181A1B] rounded-lg shadow-md overflow-hidden">
         <div className="md:flex">
           <div className="md:flex-shrink-0">
             {movie.poster_path ? (
@@ -37,7 +37,7 @@ export default async function SingleMoviePage({ params }: { params: { id: string
             className="w-full h-64 object-cover"
           />
             ) : (
-              <div className="w-full h-96 md:w-48 bg-gray-200 flex items-center justify-center">
+              <div className="w-full h-96 md:w-48 bg-[#181A1B] flex items-center justify-center">
                 <span className="text-gray-500">No image available</span>
               </div>
             )}
@@ -48,9 +48,9 @@ export default async function SingleMoviePage({ params }: { params: { id: string
               {movie.release_date}
             </p>
             {movie.overview ? (
-              <p className="text-gray-700">{movie.overview}</p>
+              <p className="text-[#E3DFDA]">{movie.overview}</p>
             ) : (
-              <p className="text-gray-700">No description available.</p>
+              <p className="text-[#E3DFDA]">No description available.</p>
             )}
           </div>
         </div>
