@@ -24,7 +24,7 @@ export default function MovieCard({ movie} : MovieProps) {
           </div>
         )}
         <div className="p-4">
-          <h2 className="text-lg font-semibold mb-2 truncate">{movie.title}</h2>
+          <h2 className="text-lg font-semibold mb-2 truncate text-[#E3DFDA]">{movie.title}</h2>
           <p className="text-sm text-[#E3DFDA]">
             {movie.release_date}
             {/* {movie.release_date ? new Date(movie.release_date).toLocaleDateString() : 'Release date unknown'} */}

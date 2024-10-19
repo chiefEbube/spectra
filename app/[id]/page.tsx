@@ -24,7 +24,7 @@ export default async function SingleMoviePage({ params }: { params: { id: string
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <Link href="/" className="text-blue-500 hover:underline mb-4 inline-block">&larr; Back to movies</Link>
+      <Link href="/" className="text-[#E3DFDA] hover:underline mb-4 inline-block">&larr; Back to movies</Link>
       <div className="bg-[#181A1B] rounded-lg shadow-md overflow-hidden">
         <div className="md:flex">
           <div className="md:flex-shrink-0">
@@ -43,8 +43,8 @@ export default async function SingleMoviePage({ params }: { params: { id: string
             )}
           </div>
           <div className="p-8">
-            <h1 className="text-2xl font-bold mb-2">{movie.original_title}</h1>
-            <p className="text-gray-600 mb-4">
+            <h1 className="text-2xl font-bold mb-2 text-[#E3DFDA]">{movie.original_title}</h1>
+            <p className="text-[#d1d0d0] mb-4">
               {movie.release_date}
             </p>
             {movie.overview ? (
