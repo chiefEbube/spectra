@@ -1,33 +1,69 @@
+'use client'
+
+import { useState, useEffect } from 'react';
 import { Movie } from '@/types/movie';
-import { use } from 'react'
 import MovieCard from './MovieCard'
+import { getMovies } from '@/app/actions/getMovies';
+import Loading from '@/app/loading';
+import { Button } from './ui/button';
 
-async function getMovies() {
-  const url = `${process.env.TMDB_API_URL}/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc`
-  const options = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      Authorization: `Bearer ${process.env.TMDB_BEARER_TOKEN}`
-    }
-  };
-
-  const res = await fetch(url, options)
-  if (!res.ok) {
-    throw new Error('Failed to fetch movies')
-  }
-  const data = await res.json()
-  return data.results
+interface MovieGridProps {
+  headerText: string;
+  endpoint: string;
 }
 
-export default function MovieGrid() {
-  const movies = use(getMovies())
+
+export default function MovieGrid({headerText, endpoint} : MovieGridProps) {
+  const [movies, setMovies] = useState<Movie[]>([])
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+  const [showAll, setShowAll] = useState(false)
+
+  useEffect(() => {
+    async function fetchMovies() {
+      try {
+        const fetchedMovies = await getMovies(endpoint)
+        setMovies(fetchedMovies)
+      } catch (error) {
+        setError("Failed to fetch movies")
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    fetchMovies()
+  }, [])
+
+  const toggleShowAll = () => {
+    setShowAll(!showAll)
+  }
+
+  if (isLoading) {
+    return <Loading />
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>
+  }
+
+  const displayedMovies = showAll ? movies : movies.slice(0, 4)
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-      {movies?.map((movie: Movie) => (
-        <MovieCard key={movie.id} movie={movie} />
-      ))}
+    <div className="space-y-4 my-16">
+      <div className='flex items-center justify-between'>
+        <h1 className='text-[#E3DFDA] font-bold text-xl'>{headerText}</h1>
+      {movies.length > 4 && (
+          <Button onClick={toggleShowAll} className='text-[#E3DFDA] font-bold shadow-md shadow-indigo-600 hover:scale-95'>
+            {showAll ? "Show Less" : "Show All"}
+          </Button>
+      )}
+      </div>
+      
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+        {displayedMovies.map((movie: Movie) => (
+          <MovieCard key={movie.id} movie={movie} />
+        ))}
+      </div>
     </div>
   )
 }
