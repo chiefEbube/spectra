@@ -4,7 +4,7 @@ import { footerLinks } from "@/data/data"
 export default function Footer() {
   return (
     <footer className="bg-black text-[#E3DFDA] w-full">
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-8 py-8">
         <div className="flex flex-col gap-10">
           <div className="text-white font-extrabold text-xl md:text-3xl"><span className="text-blue-400">icode</span> movies</div>
           <div className="flex flex-col lg:flex-row justify-between">
