@@ -24,7 +24,7 @@ export default async function SingleMoviePage({ params }: { params: { id: string
   const movie = await getMovie(params.id)
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-8 py-8">
       <Link href="/" className="text-blue-400 hover:underline mb-4 inline-block">&larr; Back to movies</Link>
       <div className="bg-[#181A1B] rounded-lg shadow-md overflow-hidden">
         <div className="flex flex-col items-start">

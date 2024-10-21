@@ -11,7 +11,7 @@ export default function Home() {
         backgroundSize: "cover"
         }}>
       </header>
-      <main className="container mx-auto px-4 pb-4">
+      <main className="container mx-auto px-8 pb-4">
         <MovieGrid headerText="Popular Movies" endpoint="movie/popular?language=en-US&page=1" />
         <MovieGrid headerText="Top Rated" endpoint="movie/top_rated?language=en-US&page=1" />
         <MovieGrid headerText="Upcoming" endpoint="movie/upcoming?language=en-US&page=1" />
