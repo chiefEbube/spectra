@@ -1,6 +1,5 @@
 import MovieGrid from '@/components/MovieGrid'
 import Hero from '@/public/images/hero.png'
-import Image from 'next/image'
 
 export default function Home() {
   return (

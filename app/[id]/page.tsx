@@ -1,3 +1,4 @@
+import MovieGrid from '@/components/MovieGrid';
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -42,7 +43,7 @@ export default async function SingleMoviePage({ params }: { params: { id: string
               </div>
             )}
           </div>
-          <div className="py-8 md:w-3/4">
+          <div className="py-8 md:w-1/2">
             <h1 className="text-2xl font-bold mb-2 text-[#E3DFDA]">Title: {movie.original_title}</h1>
             <p className="text-[#d1d0d0] mb-4">
               Release date: {new Date(movie.release_date).toDateString()}
@@ -55,6 +56,7 @@ export default async function SingleMoviePage({ params }: { params: { id: string
           </div>
         </div>
       </div>
+      <MovieGrid headerText="Similar Movies" endpoint="movie/popular?language=en-US&page=1" />
     </div>
   )
 }
