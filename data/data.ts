@@ -1,16 +1,14 @@
 export const footerLinks = {
     categories: [
-        { text: 'Fashion', url: '/' },
-        { text: 'Health & Beauty', url: '/' },
-        { text: 'Home & Office', url: '/' },
-        { text: 'Computing', url: '/' },
+        { text: 'Hollywood', url: '/' },
+        { text: 'Foreign', url: '/' },
+        { text: 'Korean', url: '/' },
     ],
     company: [
         { text: 'About', url: '/' },
-        { text: 'BLog', url: '/' },
+        { text: 'Blog', url: '/' },
         { text: 'Contact', url: '/' },
         { text: 'Refunds', url: '/' },
-        { text: 'Shipping', url: '/' },
     ],
     support: [
         { text: 'Support', url: '/' },

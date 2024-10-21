@@ -9,7 +9,7 @@ interface MovieProps {
 export default function MovieCard({ movie} : MovieProps) {
   return (
     <Link href={`/${movie.id}`} className="block">
-      <div className="bg-[#181A1B] rounded-lg shadow-lg shadow-[#000000] overflow-hidden transition-transform duration-200 ease-in-out hover:scale-105">
+      <div className="bg-[#181A1B] rounded-lg shadow-sm shadow-[#000000] overflow-hidden transition-transform duration-200 ease-in-out hover:scale-105">
         {movie.poster_path ? (
           <Image
             src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}

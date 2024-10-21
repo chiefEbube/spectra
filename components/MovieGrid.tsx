@@ -50,10 +50,10 @@ export default function MovieGrid({headerText, endpoint} : MovieGridProps) {
 
   return (
     <div className="space-y-4 my-16">
-      <div className='flex items-center justify-between'>
-        <h1 className='text-[#E3DFDA] font-bold text-xl'>{headerText}</h1>
+      <div className='flex items-center justify-between mb-2'>
+        <h1 className='text-[#E3DFDA] font-bold text-lg md:text-xl border-l-4 border-blue-400 pl-4'>{headerText}</h1>
       {movies.length > 4 && (
-          <Button onClick={toggleShowAll} className='text-[#E3DFDA] font-bold shadow-md shadow-indigo-600 hover:scale-95'>
+          <Button onClick={toggleShowAll} className='text-[#E3DFDA] font-bold shadow-lg shadow-blue-400 hover:scale-95'>
             {showAll ? "Show Less" : "Show All"}
           </Button>
       )}

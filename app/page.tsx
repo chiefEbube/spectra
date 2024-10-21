@@ -1,12 +1,23 @@
 import MovieGrid from '@/components/MovieGrid'
+import Hero from '@/public/images/hero.png'
+import Image from 'next/image'
 
 export default function Home() {
   return (
-    <main className="container mx-auto px-4 py-8 bg-[#181A1B]">
-      <h1 className="text-3xl font-bold mb-8 text-center text-[#E3DFDA]">Icode Movies</h1>
-      <MovieGrid headerText="Popular Movies" endpoint="movie/popular?language=en-US&page=1"/>
-      <MovieGrid headerText="Top Rated" endpoint="movie/top_rated?language=en-US&page=1"/>
-      <MovieGrid headerText="Upcoming" endpoint="movie/upcoming?language=en-US&page=1"/>
-    </main>
+    <>
+      <header className='h-[50vh] md:h-[70vh]' style={{
+        backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${Hero.src})`,
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+        backgroundSize: "cover"
+        }}>
+      </header>
+      <main className="container mx-auto px-4 pb-4">
+        <MovieGrid headerText="Popular Movies" endpoint="movie/popular?language=en-US&page=1" />
+        <MovieGrid headerText="Top Rated" endpoint="movie/top_rated?language=en-US&page=1" />
+        <MovieGrid headerText="Upcoming" endpoint="movie/upcoming?language=en-US&page=1" />
+      </main>
+
+    </>
   )
 }

@@ -24,17 +24,17 @@ export default async function SingleMoviePage({ params }: { params: { id: string
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <Link href="/" className="text-[#E3DFDA] hover:underline mb-4 inline-block">&larr; Back to movies</Link>
+      <Link href="/" className="text-blue-400 hover:underline mb-4 inline-block">&larr; Back to movies</Link>
       <div className="bg-[#181A1B] rounded-lg shadow-md overflow-hidden">
-        <div className="md:flex">
-          <div className="md:flex-shrink-0">
+        <div className="flex flex-col items-start">
+          <div className="">
             {movie.poster_path ? (
           <Image
             src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
             alt={movie.title}
             width={300}
             height={450}
-            className="w-full h-64 object-cover"
+            className="w-full h-64 object-contain"
           />
             ) : (
               <div className="w-full h-96 md:w-48 bg-[#181A1B] flex items-center justify-center">
@@ -42,13 +42,13 @@ export default async function SingleMoviePage({ params }: { params: { id: string
               </div>
             )}
           </div>
-          <div className="p-8">
-            <h1 className="text-2xl font-bold mb-2 text-[#E3DFDA]">{movie.original_title}</h1>
+          <div className="py-8 md:w-3/4">
+            <h1 className="text-2xl font-bold mb-2 text-[#E3DFDA]">Title: {movie.original_title}</h1>
             <p className="text-[#d1d0d0] mb-4">
-              {movie.release_date}
+              Release date: {new Date(movie.release_date).toDateString()}
             </p>
             {movie.overview ? (
-              <p className="text-[#E3DFDA]">{movie.overview}</p>
+              <p className="text-[#E3DFDA]">Description: {movie.overview}</p>
             ) : (
               <p className="text-[#E3DFDA]">No description available.</p>
             )}

@@ -20,13 +20,13 @@ body {
 
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: theme('colors.indigo.500');
+    background: theme('colors.blue.400');
     border-radius: 2px;
     /* border: 3px solid theme('colors.gray.100'); */
   }
 
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: theme('colors.indigo.600');
+    background: theme('colors.blue.400');
   }
 }
