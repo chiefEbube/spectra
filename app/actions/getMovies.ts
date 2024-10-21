@@ -3,12 +3,12 @@
 import { Movie } from "@/types/movie";
 
 export async function getMovies(endpoint: string): Promise<Movie[]> {
-    const url = `${process.env.TMDB_API_URL}/${endpoint}`
+    const url = `${process.env.NEXT_PUBLIC_API_URL}/${endpoint}`
     const options = {
       method: 'GET',
       headers: {
         accept: 'application/json',
-        Authorization: `Bearer ${process.env.TMDB_BEARER_TOKEN}`
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_BEARER_TOKEN}`
       }
     };
   

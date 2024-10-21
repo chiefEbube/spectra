@@ -3,12 +3,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 async function getMovie(id: string) {
-  const url = `${process.env.TMDB_API_URL}/movie/${id}?language=en-US`
+  const url = `${process.env.NEXT_PUBLIC_API_URL}/movie/${id}?language=en-US`
   const options = {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: `Bearer ${process.env.TMDB_BEARER_TOKEN}`
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_BEARER_TOKEN}`
     }
   };
 
