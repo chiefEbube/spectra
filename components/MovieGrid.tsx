@@ -3,27 +3,29 @@
 import { useState, useEffect } from 'react';
 import { Movie } from '@/types/movie';
 import MovieCard from './MovieCard'
-import { getMovies } from '@/app/actions/getMovies';
 import Loading from '@/app/loading';
 import { Button } from './ui/button';
+import { getMovies } from '@/app/actions/movieActions';
 
 interface MovieGridProps {
   headerText: string;
   endpoint: string;
+  onPageData?: (info: { totalPages: number }) => void
 }
 
 
-export default function MovieGrid({headerText, endpoint} : MovieGridProps) {
+export default function MovieGrid({headerText, endpoint, onPageData} : MovieGridProps) {
   const [movies, setMovies] = useState<Movie[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [showAll, setShowAll] = useState(false)
 
   useEffect(() => {
     async function fetchMovies() {
+      setIsLoading(true)
       try {
-        const fetchedMovies = await getMovies(endpoint)
-        setMovies(fetchedMovies)
+        const { results, total_pages } = await getMovies(endpoint)
+        setMovies(results)
+        onPageData?.({ totalPages: total_pages })
       } catch (error) {
         setError("Failed to fetch movies")
       } finally {
@@ -32,11 +34,7 @@ export default function MovieGrid({headerText, endpoint} : MovieGridProps) {
     }
 
     fetchMovies()
-  }, [])
-
-  const toggleShowAll = () => {
-    setShowAll(!showAll)
-  }
+  }, [endpoint, onPageData])
 
   if (isLoading) {
     return <Loading />
@@ -46,21 +44,14 @@ export default function MovieGrid({headerText, endpoint} : MovieGridProps) {
     return <div>Error: {error}</div>
   }
 
-  const displayedMovies = showAll ? movies : movies.slice(0, 4)
-
   return (
     <div className="space-y-4 my-16">
       <div className='flex items-center justify-between mb-2'>
         <h1 className='text-[#E3DFDA] font-bold text-lg md:text-xl border-l-4 border-blue-400 pl-4'>{headerText}</h1>
-      {movies.length > 4 && (
-          <Button onClick={toggleShowAll} className='text-[#E3DFDA] font-bold shadow-lg shadow-blue-400 hover:scale-95'>
-            {showAll ? "Show Less" : "Show All"}
-          </Button>
-      )}
       </div>
       
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
-        {displayedMovies.map((movie: Movie) => (
+        {movies.map((movie: Movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}
       </div>

@@ -16,8 +16,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Icode Movies",
-  description: "Find all your favorite movies here",
+ title: "Spectra TV - Discover the Latest Movies",
+  description: "A sleek, minimal web app for discovering the latest Hollywood movies"
 };
 
 export default function RootLayout({

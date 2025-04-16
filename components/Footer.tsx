@@ -1,12 +1,13 @@
 import Link from "next/link"
 import { footerLinks } from "@/data/data"
+import Image from "next/image"
 
 export default function Footer() {
   return (
     <footer className="bg-black text-[#E3DFDA] w-full">
       <div className="container mx-auto px-8 py-8">
         <div className="flex flex-col gap-10">
-          <div className="text-white font-extrabold text-xl md:text-3xl"><span className="text-blue-400">icode</span> movies</div>
+          <Image src="/images/logo.png" alt="Logo" width={150} height={150}/>
           <div className="flex flex-col lg:flex-row justify-between">
             <div className="">
               <h4 className="text-xl font-bold">New here?</h4>
@@ -21,8 +22,8 @@ export default function Footer() {
                 <h5 className="font-bold">Categories</h5>
                 <ul>
                   {
-                    footerLinks.categories.map((link) => (
-                      <li className="my-3">
+                    footerLinks.categories.map((link, i) => (
+                      <li key={i} className="my-3">
                         <Link href={link.url} className="text-sm text-[#A5A5A6]">{link.text}</Link>
                       </li>
                     ))
@@ -34,8 +35,8 @@ export default function Footer() {
                 <h5 className="font-bold">Company</h5>
                 <ul>
                   {
-                    footerLinks.company.map((link) => (
-                      <li className="my-3">
+                    footerLinks.company.map((link, i) => (
+                      <li key={i} className="my-3">
                         <Link href={link.url} className="text-sm text-[#A5A5A6]">{link.text}</Link>
                       </li>
                     ))
@@ -47,8 +48,8 @@ export default function Footer() {
                 <h5 className="font-bold">Support</h5>
                 <ul>
                   {
-                    footerLinks.support.map((link) => (
-                      <li className="my-3">
+                    footerLinks.support.map((link, i) => (
+                      <li key={i} className="my-3">
                         <Link href={link.url} className="text-sm text-[#A5A5A6]">{link.text}</Link>
                       </li>
                     ))
