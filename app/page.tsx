@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import tmdb from "@/lib/tmdb"
 import { Typewriter } from "react-simple-typewriter"
+import { ChevronsLeft, ChevronsRight } from "lucide-react"
 
 interface Movie {
   id: number
@@ -49,7 +50,7 @@ export default function Home() {
   return (
     <>
       {/* Carousel Banner */}
-      <div className="h-[50vh] md:h-[70vh] w-full overflow-hidden relative">
+      <div className="h-[70vh] w-full overflow-hidden relative">
         <Carousel
           plugins={[plugin.current]}
           opts={{ loop: true }}
@@ -58,7 +59,7 @@ export default function Home() {
         >
           <CarouselContent>
             {banners.map((movie, index) => (
-              <CarouselItem key={index} className="relative h-[50vh] md:h-[70vh] w-full">
+              <CarouselItem key={index} className="relative h-[70vh] w-full">
                 <Image
                   src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
                   alt={movie.title}
@@ -100,10 +101,14 @@ export default function Home() {
           endpoint={`trending/movie/day?language=en-US&page=${page}`}
           onPageData={({ totalPages }) => setTotalPages(totalPages)}
         />
-        <div className="flex justify-center gap-4 mt-8">
-          <Button onClick={handlePrev} disabled={page === 1}>Previous</Button>
-          <span className="text-white self-center">Page {page} of {totalPages}</span>
-          <Button onClick={handleNext} disabled={page >= totalPages}>Next</Button>
+        <div className="flex justify-center gap-4 my-8 text-white">
+          <Button variant="outline" size="sm" onClick={handlePrev} disabled={page === 1}>
+            <ChevronsLeft className="h-8 w-8" />
+          </Button>
+          <span className="self-center text-xs font-bold text-blue-400">Page {page} of {totalPages}</span>
+          <Button variant="outline" size="sm" onClick={handleNext} disabled={page >= totalPages}>
+            <ChevronsRight className="h-8 w-8" />
+          </Button>
         </div>
       </main>
     </>

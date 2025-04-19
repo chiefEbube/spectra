@@ -20,7 +20,7 @@ export default function NavBar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-black/90 backdrop-blur-sm" : "bg-gradient-to-b from-black/80 to-transparent"}`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-black/70 backdrop-blur-sm" : "bg-black"}`}
       >
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
@@ -29,10 +29,6 @@ export default function NavBar() {
               <Link href="/" className="flex items-center gap-2">
                 <Image src="/images/logo.png" alt="Logo" width={150} height={150} className="h-10 w-auto" />
               </Link>
-
-              <div className="hidden md:block text-sm text-white/70">
-                <p>Discover the latest Hollywood movies</p>
-              </div>
             </div>
 
             {/* Navigation */}

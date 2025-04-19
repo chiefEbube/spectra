@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { Movie } from '@/types/movie';
 import MovieCard from './MovieCard'
 import Loading from '@/app/loading';
-import { Button } from './ui/button';
 import { getMovies } from '@/app/actions/movieActions';
 
 interface MovieGridProps {
@@ -50,7 +49,8 @@ export default function MovieGrid({headerText, endpoint, onPageData} : MovieGrid
         <h1 className='text-[#E3DFDA] font-bold text-lg md:text-xl border-l-4 border-blue-400 pl-4'>{headerText}</h1>
       </div>
       
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4
+       sm:gap-10">
         {movies.map((movie: Movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}

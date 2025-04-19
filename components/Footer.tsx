@@ -14,7 +14,7 @@ export default function Footer() {
               <p className="text-[#D2D2D2] mt-2 mb-6 text-sm">Subscribe to our newsletter to get updates on our latest offers!</p>
               <div>
                 <input type="text" placeholder="Email address" className="bg-white p-2 lg:p-3 rounded-md lg:w-96 mr-2 mb-3 lg:mr-4 outline-none text-sm lg:text-base" />
-                <button className="bg-blue-600 text-sm lg:text-base p-2 lg:p-3 lg:w-32 font-medium">Subscribe</button>
+                <button className="bg-blue-500 text-sm lg:text-base p-2 lg:p-3 lg:w-32 font-bold">Subscribe</button>
               </div>
             </div>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-20 lg:mt-0">
